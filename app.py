@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 # MongoDB settings
-MONGO_URI = "mongodb+srv://shyambhagat:mypassword@cluster0.ltngatr.mongodb.net/?retryWrites=true&w=majority&ssl=true&appName=Cluster0"
+MONGO_URI = "mongodb+srv://shyambhagat:mypassword@cluster0.ltngatr.mongodb.net/?retryWrites=true&w=majority&ssl=true&appName=Cluster0&ssl_cert_reqs=CERT_NONE"
 
 client = MongoClient(MONGO_URI)
 db = client['lightning_data_db']
