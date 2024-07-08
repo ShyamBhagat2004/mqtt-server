@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from pymongo import MongoClient
-from datetime import datetime
+import os
 
 app = Flask(__name__)
 
@@ -13,8 +13,13 @@ collection = db['lightning_strikes']
 
 @app.route('/')
 def index():
-    data = collection.find().sort("timestamp", -1)  # Fetch data sorted by timestamp
+    # Fetch data sorted by timestamp in descending order
+    data = collection.find().sort("timestamp", -1)
+    # Pass the data to the template for display
     return render_template('index.html', data=data)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Fetch the port number from the environment variable PORT, or use 5000 if it's not set
+    port = int(os.environ.get('PORT', 5000))
+    # Start the Flask app on all available interfaces on the fetched port
+    app.run(host='0.0.0.0', port=port, debug=True)
