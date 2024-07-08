@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from pymongo import MongoClient
 import os
-
+a = 1
 app = Flask(__name__)
 
 # MongoDB settings
@@ -23,3 +23,4 @@ if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     # Start the Flask app on all available interfaces on the fetched port
     app.run(host='0.0.0.0', port=port, debug=True)
+
